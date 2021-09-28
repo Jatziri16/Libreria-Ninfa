@@ -1,0 +1,210 @@
+<br>
+<div class="container">
+    <div class="col-xs-12 col-sm-6 col-md-5 mx-auto">
+        <div class="card">
+            <div class="card-body text-center">
+                <div class="img"><img src="../../../assets/Imagenes/birds.png" style="float: unset; height:20%; width:20%"></div>
+
+                <form class="mt-4" [formGroup] = "registrarUser" (ngSubmit)='registrarCajero()'> 
+                    <h1 class="h3">Registro</h1>
+                    <div *ngIf = "loading">
+                        <div class="spinner-border float-md-none"  role="status">
+                            <span class="sr-only">Loading...</span>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="row">
+                        <div class="col">
+                            <mat-form-field appearance="outline" class="ancho">
+                                <mat-label>Nivel: </mat-label>
+                                <input matInput disabled value="Cajero">
+                            </mat-form-field> 
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            
+                            <div *ngIf="!inicioCon">
+                                <div *ngIf=" submitted && registrarUserControl.name.invalid">
+                                    <div class="text-danger invalido">*Ingresa un nombre válido </div>
+                                </div>
+                                <div *ngIf=" submitted && registrarUserControl.lastName.invalid && registrarUserControl.name.valid">
+                                    <br>
+                                </div>
+                                <mat-form-field appearance="outline" class="ancho">
+                                    <mat-label>Nombre</mat-label>
+                                    <input matInput placeholder="Nombre" formControlName="name" [(ngModel)]="encryptNombre">
+                                </mat-form-field>
+                            </div>
+                            <div *ngIf="inicioCon">
+                                <mat-form-field appearance="outline" class="ancho">
+                                    <mat-label>Nombre: </mat-label>
+                                    <input matInput disabled value="{{nombreUser}}">
+                                </mat-form-field>
+                            </div>
+                        </div>  
+                        <div class="col">
+                            
+                            <div *ngIf="!inicioCon">
+                                <div *ngIf=" submitted && registrarUserControl.lastName.invalid">
+                                    <div class="text-danger invalido">*Ingresa un apellido válido </div>
+                                </div>
+                                <div *ngIf=" submitted && registrarUserControl.lastName.valid && registrarUserControl.name.invalid">
+                                    <br>
+                                </div>
+                                <mat-form-field appearance="outline" class="ancho">
+                                    <mat-label>Apellido</mat-label>
+                                    <input matInput placeholder="Apellido" formControlName="lastName" [(ngModel)]="encryptApellido">
+                                </mat-form-field>
+                            </div>
+                            <div *ngIf="inicioCon">
+                                <mat-form-field appearance="outline" class="ancho">
+                                    <mat-label>Apellido: </mat-label>
+                                    <input matInput disabled value="{{lastUser}}">
+                                </mat-form-field>
+                            </div>
+                        </div>
+                    </div>
+                   <div class="row">
+                        <div class="col">
+                            
+                            <div *ngIf="!inicioCon">
+                                <div *ngIf=" submitted && registrarUserControl.email.invalid">
+                                    <div class="text-danger invalido">*Ingresa un correo válido </div>
+                                </div>
+                                <div *ngIf=" submitted && registrarUserControl.email.valid && registrarUserControl.user.invalid">
+                                    <br>
+                                </div>
+                                <mat-form-field appearance="outline" class="ancho">
+                                    <mat-label>Correo</mat-label>
+                                    <input matInput placeholder="ejemplo@gmail.com" formControlName="email"> 
+                                </mat-form-field>
+                            </div>
+                            <div *ngIf="inicioCon">
+                                <mat-form-field appearance="outline" class="ancho">
+                                    <mat-label>Correo: </mat-label>
+                                    <input matInput disabled value="{{emUser}}">
+                                </mat-form-field>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div *ngIf="submitted && registrarUserControl.user.invalid">
+                                <div class="text-danger invalido">*Ingresa un usuario válido </div>
+                            </div>
+                            <div *ngIf="!inicioCon">
+                                <div *ngIf=" submitted && registrarUserControl.email.invalid && registrarUserControl.user.valid">
+                                    <br>
+                                </div>
+                            </div>
+                            <mat-form-field appearance="outline" class="ancho">
+                                <mat-label>Usuario</mat-label>
+                                <input matInput placeholder="Usuario" formControlName="user"> 
+                            </mat-form-field>
+                        </div>
+                    </div> 
+                    <!--------------------------------------------------------------------------------------------->
+                        <div class="row">
+                            <div class="col">
+                                <mat-form-field class="demo-full-width" appearance="outline" class="ancho">
+                                    <mat-label>LADA</mat-label>
+                                    <select required matNativeControl formControlName="ctry"> <!--[(ngModel)]="country"-->
+                                      <option value=""></option>
+                                      <option value="+54">Argentina (+54)</option>
+                                      <option value="+61">Australia (+61))</option>
+                                      <option value="+591">Bolivia (+591)</option>
+                                      <option value="+55">Brasil (+55)</option>
+                                      <option value="+56">Chile (+56)</option>
+                                      <option value="+57">Colombia (+57)</option>
+                                      <option value="+33">Francia (+33)</option>
+                                      <option value="+49">Alemania (+49)</option>
+                                      <option value="+30">Grecia (+30)</option>
+                                      <option value="+91">India (+91)</option>
+                                      <option value="+39">Italia (+39)</option>
+                                      <option value="+52" selected>México (+52)</option>
+                                      <option value="+47">Noruega (+47)</option>
+                                      <option value="+51">Perú (+51)</option>
+                                      <option value="+34">España (+34)</option>
+                                      <option value="+46">Suecia (+46)</option>
+                                      <option value="+41">Suiza (+41)</option>
+                                      <option value="+44">Reino Unido (+44)</option>
+                                    </select>
+                                </mat-form-field>
+                            </div>
+                            <div class="col">
+                                <mat-form-field appearance="outline" class="ancho">
+                                    <mat-label>Teléfono</mat-label>
+                                    <input matInput placeholder="### - ### - ####" type="tel" maxlength="10" formControlName="phone"> <!-- [(ngModel)]=telephone-->
+                                </mat-form-field>
+                            </div>
+                        </div> 
+                    <!-- </form>---------------------------------------------------------------------------------------------- -->
+
+                    <div class="row">
+                        <div *ngIf=" submitted && registrarUserControl.password1.invalid && registrarUserControl.password2.invalid">
+                            <div class="text-danger invalido">*Ingresa una contraseña válida </div>
+                        </div>
+                        <div class="col">
+                            <mat-form-field appearance="outline" class="ancho">
+                                <mat-label>Contraseña</mat-label>
+                                <input matInput placeholder="*****" type="password" formControlName="password1" [(ngModel)]="encryptPassword">
+                            </mat-form-field>
+                        </div>
+                        <div class="col">
+                            <mat-form-field appearance="outline" class="ancho">
+                                <mat-label>Confirmar contraseña</mat-label>
+                                <input matInput placeholder="*****" type="password" formControlName="password2">
+                            </mat-form-field>
+                        </div>
+                    </div>
+                    <div id="recaptcha-container"></div>
+                    <br>
+                    <div *ngIf = "!loading; else desactivado">
+                        <button type="submit" class="btn btn-primary btn-block" > Registrarte </button> &nbsp;
+                        <button type="button" class="btn btn-secondary btn-block" (click)="reset()" routerLink ="/login"> Cancelar</button>
+                    </div>
+
+                    <ng-template #desactivado>
+                        <button type="button" class="btn btn-primary btn-block" disabled> Registrarte </button> &nbsp;
+                        <button type="button" class="btn btn-secondary btn-block" disabled> Cancelar</button>
+                    </ng-template>
+
+                    
+<!--                <div [hidden]="user">
+                        <h1>Ingresa con tu numero de Telefono</h1>
+                        <label for="phone">Numero de Telefono</label><br>
+                        <input type="text" [(ngModel)]="country"  class="input" placeholder="1"    maxlength="2">
+                        <input type="text" [(ngModel)]="phone"    class="input" placeholder="949"  maxlength="10">
+                      
+                        <div id="recaptcha-container"></div>
+                        <button (click)="sendLoginCode()">Enviar un SMS con la clave de acceso</button>
+                    </div>
+                    <div *ngIf="user">
+                        Te has logueado exitosamente con tu numero de telefono!
+                      
+                        UserId: {{ user?.uid }}
+                    </div> -->
+                    
+                </form>
+            </div>
+        </div>
+    </div> 
+</div>
+<div *ngIf="windowRef.confirmationResult">
+    <div class="container">
+        <div class="col-xs-12 col-sm-6 col-md-5 mx-auto">
+            <div class="card">
+                <div class="card-body text-center">
+                <!-- <div *ngIf="windowRef.confirmationResult"> -->
+                    <!-- <hr> -->
+                    <label for="code">Ingresa tu clave telefonica aqui</label><br>
+                    <input type="text" name="code" [(ngModel)]="verificationCode">
+                
+                    <button (click)="verifyLoginCode()">Verificar</button>
+                  </div>
+                <br>
+            </div>
+        </div>
+    </div>
+</div>
+
+

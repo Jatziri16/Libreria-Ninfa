@@ -1,0 +1,17 @@
+body { background-color: rgba(106, 106, 155, 0.637); }
+
+th { text-align: center; }
+
+td { text-align: center; }
+
+.card { background-color: rgba(241, 236, 229, 0.932); }
+
+.h3 { margin-left: 20px; }
+
+button {
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+.pointer { cursor: pointer; }
+

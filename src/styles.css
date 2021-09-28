@@ -1,1 +1,46 @@
 /* You can add global styles to this file, and also import other style files */
+@import '~ngx-toastr/toastr';
+body 
+{
+    background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)) ,url(assets/Imagenes/libraryB.jpg) ;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    height: 100vh;
+    background-attachment: fixed;
+    /*background-image: url(Imagenes/FondoGrisTextura.jpg);
+    background-repeat: repeat;
+    background-attachment: fixed;*/
+}
+
+h1, h2, h3
+{
+    font-family: 'Lucida Sans';
+    /*text-align: left;*/
+} 
+h4 
+{
+    font-family: 'Lucida Sans';
+}
+
+.img
+{
+    float: left;
+    /*text-align: center;*/
+}
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+/* .paloma 
+{
+    font-family: 'Lucida Sans';
+    font-weight: 200in; 
+    font-size: 2vh;
+} */
+/* label
+{
+    font-family: 'Lucida Sans';
+    font-weight: 200in; 
+    font-size: 2.4vh;
+}  */

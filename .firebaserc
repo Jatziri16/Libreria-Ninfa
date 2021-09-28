@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "libreriajatziri": {
+      "hosting": {
+        "LibreriaCursodia": [
+          "libreriajatziri"
+        ]
+      }
+    }
+  }
+}

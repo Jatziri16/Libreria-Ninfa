@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  </head>
+  <body>
+    <section class="container-fluid"> 
+      <section class="row justify-content-center">
+        <section class="col-12 col-sm-6 col-md-3"> 
+          <form class="form-container">
+
+              <div class="img"><img src="../../../assets/Imagenes/birds.png" style="float: unset; height:100px; width:100px" ></div>
+              <!-- <h2>Libreria Ninfa</h2> --><br>
+              <h1 class="h3" >Libreria Ninfa</h1>
+              <div *ngIf = "loading">
+                <div class="spinner-border float-md-none"  role="status">
+                  <span class="sr-only">Loading...</span>
+                </div>
+              </div>
+
+              <form class="mt-4" [formGroup] = "iniciarSesion" (ngSubmit)='usuarioLogin()'>
+                  <div class="login">
+
+                    <!-- <input class="form-control" type="text" placeholder="Usuario" aria-label="default input example" required>
+                    <input class="form-control" type="text" placeholder="Contraseña" aria-label="default input example" required> -->
+
+                    <mat-form-field class="ancho" appearance="outline">
+                      <mat-label>Ingresar como: </mat-label>
+                      <select matNativeControl required formControlName="Niveles"> <!--[formControl]="selectFormControl"-->
+                        <option label="-- selecciona tu nivel --"></option>
+                        <option value="cajero">Cajero</option>
+                        <option value="gerente">Gerente</option>
+                      </select>
+                    </mat-form-field>
+
+                    <mat-form-field class="ancho" appearance="outline">
+                      <mat-label>Usuario</mat-label>
+                      <input matInput formControlName="Username" autocomplete="off">
+                    </mat-form-field>
+              
+                      <mat-form-field class="ancho" appearance="outline">
+                        <mat-label>Contraseña</mat-label>
+                        <input matInput type="password" formControlName="Password" autocomplete="off">
+                      </mat-form-field>
+                      
+                      <br>
+                      <div [formGroup]="paloma">
+                        <div class="form-check">
+                          <div>
+                            <input type="checkbox" formControlName="aceptarTerminos" [(ngModel)]="terminos">&nbsp;
+                            <label class="label">He leído y acepto los <a class="label" routerLink="/terminos">Términos de servicio</a></label>
+                          </div>
+                        </div>
+                      </div>
+
+                        <div *ngIf = "!loading && !bloqueo; else desactivado">
+                          <button type="submit" class="btn btn-primary btn-block"> Ingresar </button> &nbsp;
+                          <button class="btn btn-secondary btn-block" routerLink ="/registro"> Registrarse </button>
+                        </div>
+
+                        <ng-template #desactivado>
+                          <button type="submit" class="btn btn-primary btn-block" disabled> Ingresar </button> &nbsp;
+                          <button class="btn btn-secondary btn-block" disabled> Registrarse </button>
+                          <br>
+                        </ng-template>
+
+                      <a class="label" href="#" >¿Olvidó su Contraseña?</a>
+
+                      <div class="centro">
+                        <!-- <div id="recaptcha-container"></div> -->
+                        <!-- <re-captcha (resolved)="resolved($event)" siteKey="6Le17IkbAAAAANFeqygJVUATqbalc494F6NYPw2s"></re-captcha> -->
+                      </div>
+
+                      <!-- <img src="https://www.huertarrebol.cl/static/img/facebook-icon.png" class="img-fluid" alt="Facebook Button" (click)="loginWithFb()"> -->
+                      <!-- <button type="button" class="btn btn-primary btn-block" (click)="loginWithFb()">Facebook</button>  -->
+                      <br>
+                      <!-- <button type="button" class="btn btn-danger" (click)="loginWithGoogle()">Google</button><br><br> -->
+
+                      <div *ngIf = "!loading && !bloqueo; else desactivaRedes">
+                        <button type="button" class="btn btn-primary btn-lg active fs-6" (click)="loginWithFb()">
+                          <span class="btn-label">
+                            <i class="fab fa-facebook-square" style="margin-right: 20px;"></i>
+                          </span>
+                          Ingresar con Facebook
+                        </button>
+                        <br><br>
+                        <button type="button" class="btn btn-labeled btn-danger fs-6" (click)="loginWithGoogle()">
+                          <span class="btn-label">
+                            <i class="fab fa-google" style="margin-right: 20px;"></i>
+                          </span>
+                          Ingresar con Google
+                        </button>
+                      </div>
+
+                      <ng-template #desactivaRedes>
+                        <button type="button" class="btn btn-primary btn-lg active fs-6" disabled>
+                          <span class="btn-label">
+                            <i class="fab fa-facebook-square" style="margin-right: 20px;"></i>
+                          </span>
+                          Ingresar con Facebook
+                        </button>
+                        <br><br>
+                        <button type="button" class="btn btn-labeled btn-danger fs-6" disabled>
+                          <span class="btn-label">
+                            <i class="fab fa-google" style="margin-right: 20px;"></i>
+                          </span>
+                          Ingresar con Google
+                        </button>
+                      </ng-template>
+                  </div>
+              </form>
+          </form>
+        </section>
+      </section>
+    </section>
+  </body>
+</html>

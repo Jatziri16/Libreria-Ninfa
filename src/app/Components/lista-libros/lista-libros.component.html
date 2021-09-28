@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  </head>
+  <body (click)="renovarToken()">
+    <app-menu></app-menu>
+    <div class="container">
+      <div class="card">
+        <!-- <div class="card-body text-center"> -->
+        <br>
+        <span class="h3">Lista de libros</span> <!--Encabezado-->
+        <button class="btn btn-dark btn-lg float-end" routerLink="/nuevo" (click)="renovarToken()">Agregar</button>
+
+        <table   id="dtBasicExample" class="table table-striped mt-5"> <!-- class="table table-striped mt-5"        matSort (matSortChange)="sortData($event)"-->
+          <thead>
+            <tr>
+              <th>Número</th> 
+              <th class="pointer" (click)="ordenarLista('i')">
+                <div *ngIf="isbn == 0">ISBN <i class="fas fa-sort"></i></div>
+                <div *ngIf="isbn == 1">ISBN <i class="fas fa-sort-up"></i></div>
+                <div *ngIf="isbn == 2">ISBN <i class="fas fa-sort-down"></i></div>
+              </th> 
+
+              <th class="pointer" (click)="ordenarLista('g')">
+                <div *ngIf="genero == 0">Género <i class="fas fa-sort"></i></div>
+                <div *ngIf="genero == 1">Género <i class="fas fa-sort-up"></i></div> 
+                <div *ngIf="genero == 2">Género <i class="fas fa-sort-down"></i></div> 
+              </th>
+
+              <th class="pointer" (click)="ordenarLista('t')">
+                <div *ngIf="titulo == 0">Titulo <i class="fas fa-sort"></i></div>
+                <div *ngIf="titulo == 1">Titulo <i class="fas fa-sort-up"></i></div>
+                <div *ngIf="titulo == 2">Titulo <i class="fas fa-sort-down"></i></div>
+              </th>
+
+              <th class="pointer" (click)="ordenarLista('a')">
+                <div *ngIf="autor == 0">Autor <i class="fas fa-sort"></i></div>
+                <div *ngIf="autor == 1">Autor <i class="fas fa-sort-up"></i></div>
+                <div *ngIf="autor == 2">Autor <i class="fas fa-sort-down"></i></div>
+              </th>
+
+              <th class="pointer" (click)="ordenarLista('p')">
+                <div *ngIf="precio == 0">Precio <i class="fas fa-sort"></i></div>
+                <div *ngIf="precio == 1">Precio <i class="fas fa-sort-up"></i></div>
+                <div *ngIf="precio == 2">Precio <i class="fas fa-sort-down"></i></div>
+              </th>
+
+              <th class="pointer" (click)="ordenarLista('e')">
+                <div *ngIf="editorial == 0">Editorial <i class="fas fa-sort"></i></div>
+                <div *ngIf="editorial == 1">Editorial <i class="fas fa-sort-up"></i></div>
+                <div *ngIf="editorial == 2">Editorial <i class="fas fa-sort-down"></i></div>
+              </th>
+
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let libro of libros, let i=index" >
+              <th>{{i+1}}</th>
+              <td>{{libro.ISBN}}</td>
+              <td>{{libro.Genero}}</td>
+              <td>{{libro.Titulo}}</td>
+              <td>{{libro.Autor}}</td>
+              <td>{{libro.Precio | currency}}</td>
+              <td>{{libro.Editorial}}</td>
+              <td>
+                <i class="pointer">
+                  <i class="far fa-edit fa-lg text-info fa-1.9x" style="margin-right: 20px;" matTooltip="Editar libro" [routerLink]="['/editlibro/', libro.id]"></i> 
+                </i>
+                <i class="pointer">
+                  <i (click)="eliminarLibro(libro.id)" class="far fa-trash-alt fa-lg text-danger fa-1.9x" matTooltip="Eliminar libro"></i>  
+                </i>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <!-- </div> -->
+      </div>
+    </div>
+  </body>
+</html>
+
+
+<!-- <tr class="text" *ngFor="let item of items | async; let i=index">
+              <th scope="row">{{i+1}}</th>
+              <td>{{item.ISBN}}</td>
+              <td>{{item.Genero}}</td>
+              <td>{{item.Titulo}}</td>
+              <td>{{item.Autor}}</td>
+              <td>$ {{item.Precio}}</td>
+              <td>{{item.Editorial}}</td>
+              <td>
+                <i class="far fa-edit fa-lg text-info fa-1.9x" style="margin-right: 20px;"></i> 
+                <i class="far fa-trash-alt fa-lg text-danger fa-1.9x"></i>  
+              </td>
+            </tr> -->

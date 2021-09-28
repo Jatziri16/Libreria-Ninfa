@@ -1,0 +1,84 @@
+<!-- <p>phone-login works!</p> -->
+<br><br>
+<div class="container">
+  <div class="col-xs-12 col-sm-6 col-md-5 mx-auto">
+    <div class="card">
+      <div class="card-body text-center">
+        <div class="img"><img src="../../../assets/Imagenes/birds.png" style="float: unset; height:100px; width:100px" ></div>
+        <br><br>
+        <h1 class="h3">Verificación de 2 pasos</h1>
+        <br>
+        <div class="centro">
+          <div id="recaptcha-container"></div>
+        </div>
+        <br>
+        <button type="submit" class="btn btn-primary btn-block" (click)="sendLoginCode()"> Enviar un SMS con la clave de acceso </button>
+        <br><br> 
+        <div *ngIf="!mensaje">
+          <button class="btn btn-secondary btn-block" routerLink ="/login"> Cancelar </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div *ngIf="windowRef.confirmationResult">
+<!-- <div *ngIf="mensaje"> -->
+  <div class="container">
+    <div class="col-xs-12 col-sm-6 col-md-5 mx-auto">
+      <div class="card">
+        <div class="card-body text-center">
+          <h3>Se envió un codigo a ******{{terminacion}}</h3>
+          <mat-form-field class="example-full-width" appearance="outline">
+            <mat-label>Ingresa el código</mat-label>
+            <input matInput type="text" name="code" [(ngModel)]="verificationCode" >
+          </mat-form-field>
+          <br>
+          <button type="submit" class="btn btn-primary btn-block" (click)="verifyLoginCode()"> Verificar </button> &nbsp;
+          <button class="btn btn-secondary btn-block" routerLink ="/login"> Cancelar </button>
+
+<!-- 
+          <div *ngIf="windowRef.confirmationResult">
+            <hr>
+            <label for="code">Ingresa tu clave telefonica aqui</label><br>
+            <input type="text" name="code" [(ngModel)]="verificationCode">
+        
+            <button (click)="verifyLoginCode()">Verificar</button> 
+          </div> -->
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<!-- <h2>Ingresa el código:</h2> -->
+          
+          <!-- <div [hidden]="user">
+              
+                <label for="phone">Numero de Telefono</label><br>
+                <input type="text" [(ngModel)]="phoneNumber.country"  class="input" placeholder="1"    maxlength="2">
+                <input type="text" [(ngModel)]="phoneNumber.area"     class="input" placeholder="949"  maxlength="3">
+                <input type="text" [(ngModel)]="phoneNumber.prefix"   class="input" placeholder="555"  maxlength="3">
+                <input type="text" [(ngModel)]="phoneNumber.line"     class="input" placeholder="5555" maxlength="4">
+              
+                <div id="recaptcha-container"></div>
+              
+                <button (click)="sendLoginCode()">Enviar un SMS con la clave de acceso</button>
+              
+                <div *ngIf="windowRef.confirmationResult">
+                  <hr>
+                  <label for="code">Ingresa tu clave telefonica aqui</label><br>
+                  <input type="text" name="code" [(ngModel)]="verificationCode">
+              
+                  <button (click)="verifyLoginCode()">Verificar</button>
+                </div>
+              
+            </div>
+              
+              <div *ngIf="user">
+                Te has logueado exitosamente con tu numero de telefono!
+              
+                UserId: {{ user?.uid }}
+              
+          </div> -->

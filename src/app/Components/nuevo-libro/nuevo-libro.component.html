@@ -1,0 +1,95 @@
+<body (click)="renovarToken()">
+    <app-menu></app-menu> 
+    <div class="container pt-4">
+        <div class="row">
+            <div class="card text-center">
+                <div class="card-body">
+                    <span class="h3">{{titulo}}</span>
+                    <br>
+                    <div *ngIf="loading" class="spinner-border float-end" role="status">
+                        <span class="sr-only">Loading...</span>
+                    </div>
+                    <div *ngIf="submitted && createLibro.invalid">
+                        <div class="text-danger">* Todos los campos son obligatorios *</div>
+                    </div>
+                    <!-- <span *ngIf="submitted && createLibro.invalid" class="badge bg-danger">Todos los campos son obligatorios</span> -->
+    
+                    <form class="mt-4" [formGroup] = "createLibro" (ngSubmit)='agregarEditarLibro()'> <!-- Form -->
+                        <!-- Directiva: "(ngSubmit)" que invoca al método: "agregarLibro()" (.ts) ----(S2-M2) -->
+
+                        <div class="row">
+                            <div class="col">
+                                <br>
+                                <!-- <span *ngIf="submitted && createLibroControl.ISBN.invalid" class="badge bg-danger">Solo se admiten números y guiones intermedios</span> -->
+                                <input type="text" class="form-control form-control-lg" formControlName="ISBN" placeholder="ISBN">
+                                <div *ngIf="submitted && createLibroControl.ISBN.invalid">
+                                    <div class="text-danger invalido">*Solo se admiten números y guiones intermedios </div>
+                                </div>
+                                <!-- <div *ngIf="submitted && createLibroControl.ISBN.invalid; else isbnValid">
+                                    <input type="text" class="form-control form-control-lg is-invalid" formControlName="ISBN" placeholder="ISBN">
+                                    <div class="invalid-feedback">Solo se admiten números y guiones intermedios</div>
+                                </div>
+                                <ng-template #isbnValid>
+                                    <input type="text" class="form-control form-control-lg" formControlName="ISBN" placeholder="ISBN">
+                                </ng-template> -->
+                            </div>
+                            <div class="col">
+                                <br>
+                                <input type="text" class="form-control form-control-lg" formControlName="Genero" placeholder="Género">
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col">
+                                <br>
+                                <input type="text" class="form-control form-control-lg mt-2" formControlName="Titulo" placeholder="Título">
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col">
+                                <br>
+                                <input type="text" class="form-control form-control-lg mt-2" formControlName="Editorial" placeholder="Editorial">
+                            </div>
+                            <div class="col">
+                                <br>
+                                <input type="text" class="form-control form-control-lg mt-2" formControlName="Autor" placeholder="Autor">
+                            </div>
+                            <div class="col">
+                                <!-- <span *ngIf="submitted && createLibroControl.Precio.invalid" class="badge bg-danger">Solo se admiten números y puntos</span> -->
+                                <br>
+                                <input type="text" class="form-control form-control-lg mt-2" formControlName="Precio" placeholder="Precio">
+                                <div *ngIf="submitted && createLibroControl.Precio.invalid">
+                                    <div class="text-danger invalido">*Solo se admiten números y puntos </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <br>
+                        
+                        <div [formGroup]="paloma">
+                            <div *ngIf="masLibro">
+                                <div class="form-check">
+                                    <input type="checkbox" formControlName="otroL" [(ngModel)]="otroBook">&nbsp;
+                                    <label>Agregar otro libro</label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="mt-3">
+                            <div *ngIf="loading1; else desactivado" >
+                                <button type="text" class="btn btn-secondary btn-lg" style="margin-right: 20px; margin-top: 5px;" routerLink="/lista" (click)="renovarToken()"> Cancelar </button>
+                                <button type="submit" class="btn btn-dark btn-lg" style="margin-top: 5px;"> {{tituloBoton}} </button>
+                            </div>
+                            <ng-template #desactivado>
+                                <button disabled="disabled" type="text" class="btn btn-secondary btn-lg" style="margin-right: 20px; margin-top: 5px;" routerLink="/lista"> Cancelar </button>
+                                <button disabled="disabled" type="submit" class="btn btn-dark btn-lg" style="margin-top: 5px;"> {{tituloBoton}} </button>
+                            </ng-template>
+                        </div>
+                        
+                    </form> <!-- Finaliza el form -->
+                </div>
+            </div>
+        </div>
+    </div>
+</body>

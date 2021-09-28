@@ -1,0 +1,25 @@
+.login {
+    max-width: 390px;
+    text-align: center;
+}
+
+.ancho { width:85%; }
+
+.form-container {
+    position: absolute;
+    top: 20vh;
+    background-color: #f5f5f5;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px 0px #000;
+}
+
+.centro {
+    text-align: center;
+    display: inline-block;
+}
+
+.label {
+    font-family: 'Lucida Sans';
+    font-size: 2vh;
+} 
